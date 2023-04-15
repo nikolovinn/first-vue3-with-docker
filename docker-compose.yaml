@@ -1,0 +1,22 @@
+version: '3'
+services:
+  #DELI FrontEnd
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    restart: always
+    ports:
+      - "8080:5000"
+    hostname: frontend.local
+    networks:
+      - dockernet
+    volumes: 
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  frontend:
+
+networks:
+  dockernet:
